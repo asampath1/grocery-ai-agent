@@ -30,6 +30,7 @@
 - [x] Git repository initialised locally
 - [x] GitHub remote repository created and linked (github.com/asampath1/grocery-ai-agent)
 - [x] First commit pushed (`d31e3d2`)
+- [x] GitHub Milestones + Project board set up; Phase 1 backfilled as #1–#3 (DEC-006)
 - [x] Local toolchain verified (Python ✅, Node ✅, git ✅, Docker ✅ via OrbStack; psql deferred to Phase 4)
 
 ## Environment
@@ -51,7 +52,9 @@
 
 ## Next Task
 
-1. Set up GitHub Milestones (Phases 2–3) and the "grocery-ai-agent roadmap" Project board (DEC-006).
-2. Phase 2, Task 2.1: Draft the high-level architecture. Issue: "Task 2.1: Draft high-level architecture" (milestone: Phase 2).
+Phase 2, Task 2.1: Draft high-level architecture: [#4](https://github.com/asampath1/grocery-ai-agent/issues/4)
 
-Task tracking: [Project board](https://github.com/asampath1?tab=projects) · [Issues](https://github.com/asampath1/grocery-ai-agent/issues)
+## Tracking
+
+- [Project board](https://github.com/users/asampath1/projects/1)
+- [Milestones](https://github.com/asampath1/grocery-ai-agent/milestones): Phase 1 closed (#1–#3), Phase 2 open, Phase 3 open
