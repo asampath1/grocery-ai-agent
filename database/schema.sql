@@ -1,0 +1,4 @@
+-- grocery-ai-agent database schema
+-- Intentionally empty: tables are designed in Phase 4 (Database Design),
+-- after Phase 3 shows what real source data looks like.
+-- Every table added here must be justified in docs/decision-log.md.

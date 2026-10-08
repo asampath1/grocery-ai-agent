@@ -1,0 +1,2 @@
+-- Sample data for local development and tests.
+-- Populated in Phase 4/5. Prefer captured REAL responses over invented data.
