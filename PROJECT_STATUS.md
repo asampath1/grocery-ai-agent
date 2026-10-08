@@ -27,9 +27,9 @@
 - [x] Coach prompt finalised (phases revised)
 - [x] Folder structure scaffolded
 - [x] Initial docs created
-- [ ] Git repository initialised locally
-- [ ] GitHub remote repository created and linked
-- [ ] First commit pushed
+- [x] Git repository initialised locally
+- [x] GitHub remote repository created and linked (github.com/asampath1/grocery-ai-agent)
+- [x] First commit pushed (`d31e3d2`)
 - [ ] Local toolchain verified (Python ✅, Node ✅, git ✅, Docker ❌, psql ❌)
 
 ## Environment
@@ -51,4 +51,4 @@
 
 ## Next Task
 
-Initialise git locally, create the GitHub repo, and push the first commit.
+Task 1.2: Choose and install a Docker runtime on macOS (Docker Desktop vs. OrbStack vs. Colima).

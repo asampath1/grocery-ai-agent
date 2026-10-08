@@ -10,12 +10,14 @@
 - Revised the phase plan from 12 to 13 phases (DEC-002).
 - Set up `CLAUDE.md` so the coach prompt loads automatically (DEC-001).
 - Scaffolded the repository folder structure and initial docs.
+- Initialised git, created the public GitHub repo `asampath1/grocery-ai-agent`, and pushed the first commit (`d31e3d2`).
 - Checked the local toolchain: Python 3.12.4, Node 26.8.2, and git 2.45.2 are present. Docker and psql are missing.
 
 ## What I Learned
 
 - Claude Code only auto-loads `CLAUDE.md`. Other files need to be imported with `@path`.
 - Asking "what does Claude actually add?" matters. "Cheapest product" is a SQL query. Claude's value is in understanding questions and matching products.
+- `.env.example` is committed on purpose as a template; `.env` is ignored. The `!.env.example` rule in `.gitignore` re-includes it.
 - Data access is probably the hardest part of this project, because Indian grocery platforms don't appear to have public pricing APIs.
 
 ## Problems Encountered
@@ -38,4 +40,4 @@
 
 ## Next Milestone
 
-Finish Phase 1: initialise git, create the GitHub repo, and make the first commit and push.
+Task 1.2: pick and install a Docker runtime, then close out Phase 1.
