@@ -1,15 +1,15 @@
 # Project Status
 
 **Last updated:** 2026-10-08
-**Current phase:** Phase 1 — Repository Setup
-**Phase progress:** In progress
+**Current phase:** Phase 2 — Architecture Design
+**Phase progress:** Not started
 
 ## Phase Tracker
 
 | # | Phase | Status |
 |---|-------|--------|
-| 1 | Repository Setup | 🟡 In progress |
-| 2 | Architecture Design | ⚪ Not started |
+| 1 | Repository Setup | ✅ Complete (2026-10-08) |
+| 2 | Architecture Design | 🟡 Next |
 | 3 | Data Source Investigation | ⚪ Not started |
 | 4 | Database Design | ⚪ Not started |
 | 5 | Data Ingestion MVP | ⚪ Not started |
@@ -30,7 +30,7 @@
 - [x] Git repository initialised locally
 - [x] GitHub remote repository created and linked (github.com/asampath1/grocery-ai-agent)
 - [x] First commit pushed (`d31e3d2`)
-- [ ] Local toolchain verified (Python ✅, Node ✅, git ✅, Docker ❌, psql ❌)
+- [x] Local toolchain verified (Python ✅, Node ✅, git ✅, Docker ✅ via OrbStack; psql deferred to Phase 4)
 
 ## Environment
 
@@ -40,8 +40,8 @@
 | Python | ✅ 3.12.4 (Homebrew) |
 | Node | ✅ 26.8.2 (Homebrew) |
 | git | ✅ 2.45.2 |
-| Docker | ❌ Not installed (needed by Phase 4/5) |
-| PostgreSQL client | ❌ Not installed (needed by Phase 4) |
+| Docker | ✅ 29.4.0 via OrbStack, Compose v5.1.2 (DEC-005) |
+| PostgreSQL client | ⏸ Deferred: use `psql` inside the container in Phase 4 |
 | Hostinger | ⚠️ "Premium" plan, needs verification: may be shared hosting, not a VPS |
 
 ## Open Blockers / Decisions Pending
@@ -51,4 +51,4 @@
 
 ## Next Task
 
-Task 1.2: Choose and install a Docker runtime on macOS (Docker Desktop vs. OrbStack vs. Colima).
+Phase 2, Task 2.1: Draft the high-level architecture and answer the open questions in `docs/architecture.md`.

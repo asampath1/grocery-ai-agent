@@ -55,3 +55,15 @@ Format: lightweight ADR (Architecture Decision Record).
 - **Status:** Accepted
 - **Decision:** All price lookups target **pincode 560016 (Bangalore)**.
 - **Reason:** Quick-commerce prices and stock depend on pincode. Fixing one location keeps data comparable and the scope small. The pincode is stored per price record so more locations can be added later.
+
+---
+
+## DEC-005 — Docker runtime on macOS: OrbStack
+
+- **Date:** 2026-10-08
+- **Status:** Accepted
+- **Context:** Docker on macOS needs a Linux VM. The options were Docker Desktop, OrbStack, and Colima.
+- **Decision:** OrbStack.
+- **Reasons:** Lightest on resources, native Apple Silicon support, very little setup, free for personal use.
+- **Trade-offs:** Closed source and from a small company. If that becomes a problem, Colima (MIT licence) is a drop-in replacement, because containers and Compose files don't depend on the runtime.
+- **Note:** OrbStack starts with a 30-day Pro trial. After it ends, choose the free personal-use tier. No Pro features are needed.
