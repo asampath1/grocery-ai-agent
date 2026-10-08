@@ -67,3 +67,14 @@ Format: lightweight ADR (Architecture Decision Record).
 - **Reasons:** Lightest on resources, native Apple Silicon support, very little setup, free for personal use.
 - **Trade-offs:** Closed source and from a small company. If that becomes a problem, Colima (MIT licence) is a drop-in replacement, because containers and Compose files don't depend on the runtime.
 - **Note:** OrbStack starts with a 30-day Pro trial. After it ends, choose the free personal-use tier. No Pro features are needed.
+
+---
+
+## DEC-006 — Task tracking with GitHub Issues + Projects
+
+- **Date:** 2026-10-08
+- **Status:** Accepted
+- **Context:** Progress was tracked only in `PROJECT_STATUS.md`. GitHub Issues and Projects provide task tracking linked to commits, which is standard team practice and visible in the portfolio.
+- **Decision:** Phases are Milestones, tasks are Issues, and a Board-view Project shows the flow. Commits close issues with `closes #N`.
+- **Avoiding duplication:** `PROJECT_STATUS.md` holds the phase-level summary only. Task-level detail lives in Issues.
+- **Trade-off:** About 2 minutes of overhead per task, in exchange for traceable history (plan → issue → commit → close) and practice with a real-team workflow.

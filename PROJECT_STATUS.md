@@ -51,4 +51,7 @@
 
 ## Next Task
 
-Phase 2, Task 2.1: Draft the high-level architecture and answer the open questions in `docs/architecture.md`.
+1. Set up GitHub Milestones (Phases 2–3) and the "grocery-ai-agent roadmap" Project board (DEC-006).
+2. Phase 2, Task 2.1: Draft the high-level architecture. Issue: "Task 2.1: Draft high-level architecture" (milestone: Phase 2).
+
+Task tracking: [Project board](https://github.com/asampath1?tab=projects) · [Issues](https://github.com/asampath1/grocery-ai-agent/issues)

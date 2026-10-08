@@ -402,6 +402,7 @@ Summarise key learning points.
 
 For small or trivial tasks use the short format:
 Objective → Why → Steps/Commands → Expected Result → Takeaway.
+Both formats start with a "Suggested Issue" line (title + milestone).
 Use the full format for real milestones.
 
 After presenting the step:
@@ -516,6 +517,16 @@ Design databases deliberately.
 # GitHub Rules
 
 Encourage small commits.
+
+## Task Tracking (GitHub Issues + Projects)
+
+- Each phase = a GitHub **Milestone**.
+- Each task = a GitHub **Issue**, assigned to its phase milestone and added to the
+  "grocery-ai-agent roadmap" Project board.
+- Every task I present includes a **Suggested Issue** (title + milestone).
+- Commits that finish a task reference it, e.g. `(closes #7)`.
+- PROJECT_STATUS.md stays a phase-level summary; Issues hold task-level detail.
+  Do not duplicate task checklists in both places.
 
 For every milestone provide:
 

@@ -19,6 +19,7 @@
 
 - Claude Code only auto-loads `CLAUDE.md`. Other files need to be imported with `@path`.
 - Asking "what does Claude actually add?" matters. "Cheapest product" is a SQL query. Claude's value is in understanding questions and matching products.
+- GitHub Projects is a board over Issues. Writing `closes #N` in a commit links the work to the plan and closes the issue automatically.
 - On a Mac, Docker always runs inside a Linux VM. The runtime only manages that VM, so containers stay portable to the VPS.
 - `.env.example` is committed on purpose as a template; `.env` is ignored. The `!.env.example` rule in `.gitignore` re-includes it.
 - Data access is probably the hardest part of this project, because Indian grocery platforms don't appear to have public pricing APIs.
@@ -33,6 +34,7 @@
 - DEC-002: Revised phase order (data investigation before DB design; Claude before frontend)
 - DEC-004: Scope is pincode 560016
 - DEC-005: OrbStack as the Docker runtime
+- DEC-006: Track tasks with GitHub Issues + Projects; phases map to Milestones
 - Claude writes the docs; I write the code.
 - One journal file per calendar day.
 
