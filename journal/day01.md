@@ -13,7 +13,7 @@
 - Initialised git, created the public GitHub repo `asampath1/grocery-ai-agent`, and pushed the first commit (`d31e3d2`).
 - Checked the local toolchain: Python 3.12.4, Node 26.8.2, and git 2.45.2 are present.
 - Installed OrbStack. Docker 29.4.0 and Compose v5.1.2 are working, and `hello-world` ran natively on arm64 (DEC-005).
-- Set up GitHub Milestones (Phases 1–3) and the Project board. Backfilled Phase 1 as issues #1–#3 and queued #4 (Task 2.1).
+- Set up GitHub Milestones (Phases 1–3) and the Project board. Backfilled Phase 1 as issues #1–#3 and queued #4 (Task 2.1). Made the board public and added a description and README.
 - **Phase 1 complete.**
 
 ## What I Learned

@@ -318,7 +318,8 @@ grocery-ai-agent/
 │   ├── roadmap.md
 │   ├── architecture.md
 │   ├── decision-log.md
-│   └── glossary.md
+│   ├── glossary.md
+│   └── reviews/             (design review records: first answer → challenge → revision)
 │
 ├── journal/
 │   ├── day01.md             (one file per calendar day worked)
@@ -566,6 +567,18 @@ Whenever a coding session ends:
 Update:
 
 - journal/dayXX.md
+
+Whenever you review my answers, designs, or code:
+
+Create or update a review record in docs/reviews/ containing:
+
+- The question asked
+- My first answer (verbatim)
+- Your challenges and why
+- My revised answer (verbatim)
+- The outcome, linked to decision-log entries
+
+Add it to the index in docs/reviews/README.md.
 
 Documentation is mandatory.
 

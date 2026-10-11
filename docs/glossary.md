@@ -12,3 +12,9 @@ Terms are added as they come up in the project.
 | **Product matching** | Deciding that listings on different stores refer to the same real-world product. |
 | **Tool calling** | A Claude API feature where the model asks the application to run a defined function (a "tool") and uses the result in its answer. |
 | **Price snapshot** | A price observed for a product, at a store, at a specific time. |
+| **Agent loop** | Our code that sends a question and tool definitions to Claude, runs the tools Claude requests, returns the results, and repeats until Claude gives a final answer. |
+| **Service layer** | Python functions holding the business logic (e.g. `find_cheapest`). Shared by REST endpoints and Claude tools. |
+| **Tool allowlist** | The fixed set of tools Claude may call, each with validated parameters. Nothing outside the list can run. |
+| **Stale price** | A price snapshot older than the freshness threshold (12h). Shown with its age, never presented as the current cheapest. |
+| **Source listing** | A product as it appears on one store, with that store's name and pack size. Linked to a canonical product by matching. |
+| **Canonical product** | Our single, store-independent record of a real product (e.g. "Tata Sampann Toor Dal, 1 kg"). |

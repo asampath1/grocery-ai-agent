@@ -1,15 +1,15 @@
 # Project Status
 
-**Last updated:** 2026-10-08
+**Last updated:** 2026-10-11
 **Current phase:** Phase 2 — Architecture Design
-**Phase progress:** Not started
+**Phase progress:** Architecture v1 agreed; exit review pending
 
 ## Phase Tracker
 
 | # | Phase | Status |
 |---|-------|--------|
 | 1 | Repository Setup | ✅ Complete (2026-10-08) |
-| 2 | Architecture Design | 🟡 Next |
+| 2 | Architecture Design | 🟡 In progress |
 | 3 | Data Source Investigation | ⚪ Not started |
 | 4 | Database Design | ⚪ Not started |
 | 5 | Data Ingestion MVP | ⚪ Not started |
@@ -52,7 +52,9 @@
 
 ## Next Task
 
-Phase 2, Task 2.1: Draft high-level architecture: [#4](https://github.com/asampath1/grocery-ai-agent/issues/4)
+Phase 2, Task 2.2: Phase 2 exit review (mentor review + understanding check)
+
+Done: Task 2.1 [#4](https://github.com/asampath1/grocery-ai-agent/issues/4): architecture v1 (DEC-007 to DEC-010)
 
 ## Tracking
 
