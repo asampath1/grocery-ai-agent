@@ -1,16 +1,16 @@
 # Project Status
 
 **Last updated:** 2026-10-11
-**Current phase:** Phase 2 — Architecture Design
-**Phase progress:** Architecture v1 agreed; exit review pending
+**Current phase:** Phase 3 — Data Source Investigation
+**Phase progress:** Not started
 
 ## Phase Tracker
 
 | # | Phase | Status |
 |---|-------|--------|
 | 1 | Repository Setup | ✅ Complete (2026-10-08) |
-| 2 | Architecture Design | 🟡 In progress |
-| 3 | Data Source Investigation | ⚪ Not started |
+| 2 | Architecture Design | ✅ Complete (2026-10-11) |
+| 3 | Data Source Investigation | 🟡 Next |
 | 4 | Database Design | ⚪ Not started |
 | 5 | Data Ingestion MVP | ⚪ Not started |
 | 6 | Backend API MVP (FastAPI) | ⚪ Not started |
@@ -52,11 +52,11 @@
 
 ## Next Task
 
-Phase 2, Task 2.2: Phase 2 exit review (mentor review + understanding check)
+Phase 3, Task 3.1: Survey grocery platforms for pincode 560016 (issue to be created).
 
-Done: Task 2.1 [#4](https://github.com/asampath1/grocery-ai-agent/issues/4): architecture v1 (DEC-007 to DEC-010)
+Phase 2 done: [#4](https://github.com/asampath1/grocery-ai-agent/issues/4) architecture v1, [#5](https://github.com/asampath1/grocery-ai-agent/issues/5) exit review → architecture v1.1 (DEC-007 to DEC-013). Reviews: [docs/reviews/](docs/reviews/)
 
 ## Tracking
 
 - [Project board](https://github.com/users/asampath1/projects/1)
-- [Milestones](https://github.com/asampath1/grocery-ai-agent/milestones): Phase 1 closed (#1–#3), Phase 2 open, Phase 3 open
+- [Milestones](https://github.com/asampath1/grocery-ai-agent/milestones): Phase 1 closed (#1–#3), Phase 2 closed (#4–#5), Phase 3 open

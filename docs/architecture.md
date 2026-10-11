@@ -1,6 +1,6 @@
 # Architecture
 
-> Status: **v1, agreed 2026-10-11** (Phase 2). Decisions: DEC-007 to DEC-010.
+> Status: **v1.1, agreed 2026-10-11** (Phase 2). Decisions: DEC-007 to DEC-013.
 > Revisit at the end of Phase 3 (data source chosen) and Phase 4 (schema designed).
 
 ## System overview
@@ -68,9 +68,17 @@ Timer
 4. Listing    upsert source listing + insert price snapshot
   ↓
 5. Match      link listing → canonical product                 (uncertain ⇒ flagged, NOT linked)
+  ↓
+6. Record run write ingestion_runs row (status, counts, error); on success ping dead man's switch
 ```
 
 Each step can fail without losing the output of the steps before it. Steps 3–5 can be **re-run from stored raw data** when the parser or matcher improves.
+
+- **Unit of work = (source, pincode, product).** Each item succeeds or fails on its own, and one failure never aborts the run (DEC-013).
+- Snapshots carry an **`availability`** status (`in_stock` / `out_of_stock` / `not_serviceable`), kept separate from fetch errors. "Not available" is data, not a failure.
+- Parsed rows record a **`parser_version`**, so a buggy version's output can be found and re-parsed selectively.
+- Re-runs are **idempotent** (upserts, not inserts): running twice gives the same result as running once.
+- Re-parsing history is only possible where keeping raw data is permitted (see DEC-003).
 
 ## Flow 2: Question answering (on request)
 
@@ -97,6 +105,33 @@ Client
 - **Code layout (DEC-009):** one package, two entry points (`api`, `ingest`). In Docker: one image, two containers.
 - **Matching (DEC-010):** a separate step after ingestion. Uncertain matches are flagged, never silently linked. It can be re-run over historical listings.
 
+## Failure handling
+
+| Failure | What happens | What the user sees |
+|---|---|---|
+| Source down / blocked | Worker run fails and is recorded in `ingestion_runs`. No success ping, so an alert fires. **API unaffected.** | Last-known prices with their age. After 12h, marked stale. |
+| Some items/areas fail in a run (partial failure) | Failed items are recorded and the rest continue. Run status is `partial`. | Fresh prices where fetched; last-known price with its age elsewhere. |
+| Product not stocked / area not serviceable | Stored as an `availability` status. **Not** an error and no alert. | "Not available at <store> in your area". The old price is never shown as if it can be bought. |
+| Parser bug discovered | Fix the parser, bump `parser_version`, re-parse from raw (idempotent). | Corrected prices after the re-run. |
+| Worker never runs (scheduler broken, container down) | No log, no failure record, but **no success ping**, so the dead man's switch alerts. | Same as "source down". |
+| Malicious or invalid tool argument | Rejected by parameter validation. Parameterised queries and a least-privilege DB user act as further layers. | A polite "can't do that" from Claude. |
+
+## Security: layered protections for tools
+
+Claude's tool arguments are **untrusted input**, because they may reflect what a user wrote.
+
+1. **Fixed tool allowlist.** There's no free-form SQL or HTTP tool.
+2. **Parameter validation.** E.g. pincode must match `^\d{6}$` and be a supported pincode.
+3. **Parameterised queries** in the service layer. Values are always passed as data, never as SQL.
+4. **Least-privilege DB user** for the API. It can read and write data but can't drop or alter tables.
+
+## Observability (DEC-012)
+
+- **`ingestion_runs` table:** one row per worker run, with status `success` / `partial` / `failed` and item counts.
+- **`/health` endpoint:** reports the age of the last successful run.
+- **Dead man's switch:** the worker pings an external check after each successful run, and the check alerts if no ping arrives in time. Tool chosen in Phase 5 (e.g. Healthchecks.io free tier).
+- **Logs:** for diagnosing *why* something failed, not for detecting *that* it failed.
+
 ## Deferred decisions
 
 | Question | Decide in |
@@ -106,3 +141,5 @@ Client
 | Table design for listings / products / snapshots / matches | Phase 4 |
 | Worker trigger: cron vs. systemd timer vs. in-container loop | Phase 5 |
 | Matching method: rules vs. Claude vs. both | Phase 8 |
+| Dead man's switch service and alert channel (email / Telegram) | Phase 5 |
+| Partial-failure threshold for alerting (e.g. <80% success ⇒ fail) and per-area alerting | When a 2nd pincode or source is added |

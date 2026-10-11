@@ -18,3 +18,10 @@ Terms are added as they come up in the project.
 | **Stale price** | A price snapshot older than the freshness threshold (12h). Shown with its age, never presented as the current cheapest. |
 | **Source listing** | A product as it appears on one store, with that store's name and pack size. Linked to a canonical product by matching. |
 | **Canonical product** | Our single, store-independent record of a real product (e.g. "Tata Sampann Toor Dal, 1 kg"). |
+| **Idempotent** | An operation that gives the same result whether it runs once or many times (e.g. an upsert). Makes re-runs safe. |
+| **Parameterised query** | SQL where values are passed separately from the query text, so input is always treated as data and never run as SQL. The core defence against SQL injection. |
+| **Defence in depth** | Several independent protective layers, so one failing doesn't expose the system. |
+| **Dead man's switch** | A monitor that alerts when an expected "I'm alive / success" signal *stops arriving*. Catches failures that can't report themselves. |
+| **Least privilege** | Giving each component only the permissions it needs, e.g. an API DB user that can't drop tables. |
+| **Partial failure** | A run where some items succeed and others fail. Handled by isolating each (source, pincode, product) fetch. |
+| **Availability status** | Whether a product can be bought in an area (`in_stock` / `out_of_stock` / `not_serviceable`). Stored as data, never treated as an error. |

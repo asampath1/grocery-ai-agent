@@ -132,3 +132,30 @@ Format: lightweight ADR (Architecture Decision Record).
 - **Options:** (a) do nothing. (b) commit raw transcripts: complete, but noisy and containing personal details. (c) curated review records. ✅
 - **Decision:** Add `docs/reviews/`, one record per review, with first answers and revisions quoted word for word. A private `/export` backup stays optional and is not committed.
 - **Consequences:** The repo structure gains `docs/reviews/`. The coach prompt now requires a review record after every review. Records 01 and 02 were backfilled.
+
+---
+
+## DEC-012 — Ingestion observability: run records + dead man's switch
+
+- **Date:** 2026-10-11
+- **Status:** Accepted (service choice deferred to Phase 5)
+- **Context:** Exit-review question: "The source is down for 18 hours. Who notices?" In the v1 design, nobody did. Logs alone are passive.
+- **Options:** (a) logs only: they explain failures but don't detect them. (b) alert on failure: misses the case where the worker never runs. (c) run records + a success ping to a dead man's switch. ✅
+- **Decision:** Record each run in `ingestion_runs`, expose the last-success age on `/health`, and ping an external check after every successful run. A missing ping triggers an alert.
+- **Reasoning:** Only the *absence of success* catches every failure mode, including a crashed scheduler or a stopped container. Free tiers of hosted checks (e.g. Healthchecks.io) cost nothing at this scale.
+- **Also recorded from this review:** `parser_version` on parsed rows, idempotent re-runs, and four layers of tool protection (allowlist → validation → parameterised queries → least-privilege DB user). See `architecture.md`.
+
+---
+
+## DEC-013 — Partial failures: per-item isolation and availability status
+
+- **Date:** 2026-10-11
+- **Status:** Accepted (thresholds deferred)
+- **Context:** My question: what if a run succeeds for some areas and fails for others? Pincode is stored per record (DEC-004), but partial runs hadn't been designed for.
+- **Decision (now):**
+  1. **Unit of work = (source, pincode, product).** Each fetch succeeds or fails independently, and a failure never aborts the run.
+  2. **`availability` status** on snapshots (`in_stock` / `out_of_stock` / `not_serviceable`), kept separate from fetch errors.
+  3. **Run status** is `success` / `partial` / `failed`, with item counts in `ingestion_runs`.
+- **Deferred:** the alert threshold for partial runs (e.g. <80% success counts as a failure) and per-area alerting, until a second pincode or source exists.
+- **Reasoning:** Treating "not available" as an error causes false alerts. Treating a failed fetch as "not available" gives users wrong answers. Isolation and the availability status cost almost nothing now and are expensive to retrofit. Thresholds would be over-engineering with one pincode.
+- **Consequences:** The Phase 4 schema needs an `availability` column on snapshots and per-run item counts.
