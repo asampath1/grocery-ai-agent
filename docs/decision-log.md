@@ -46,6 +46,11 @@ Format: lightweight ADR (Architecture Decision Record).
   4. Manual or semi-manual data capture
   5. Mock data, as a last resort only
 - **Decision criteria:** legality/ToS, stability, learning value, effort.
+- **Evidence (2026-10-13, Review 04):**
+  - Blinkit, BigBasket, JioMart: ToS **prohibit** automated price collection. BigBasket also prohibits equivalent *manual* monitoring. JioMart also prohibits building *your own database* of its content.
+  - Amazon: official Creators/PA API exists, but needs an Associates account **and ≥10 qualifying sales in 30 days**. Blocked by eligibility.
+  - Options 2–4 above are **ruled out** for these three platforms. Remaining candidates: open government data, my own data (invoices/orders), asking for written permission, simulated data (clearly labelled), or combinations. To be decided in Task 3.2.
+- **Policy principle (agreed in review):** If the ToS prohibits it, we don't automate it, whatever robots.txt or the technology allows.
 
 ---
 
@@ -159,3 +164,13 @@ Format: lightweight ADR (Architecture Decision Record).
 - **Deferred:** the alert threshold for partial runs (e.g. <80% success counts as a failure) and per-area alerting, until a second pincode or source exists.
 - **Reasoning:** Treating "not available" as an error causes false alerts. Treating a failed fetch as "not available" gives users wrong answers. Isolation and the availability status cost almost nothing now and are expensive to retrofit. Thresholds would be over-engineering with one pincode.
 - **Consequences:** The Phase 4 schema needs an `availability` column on snapshots and per-run item counts.
+
+---
+
+## DEC-014 — Keep a data-sources reference document
+
+- **Date:** 2026-10-13
+- **Status:** Accepted
+- **Context:** Review records capture *how* sources were investigated, as a point-in-time story. We also need a *current* reference for each source: status, terms, endpoints, fields. That will matter more as sources are added and their status changes.
+- **Decision:** Add `docs/data-sources.md`, one section per source plus a status summary table. Update it whenever a source is evaluated or changes status.
+- **Consequences:** The repo structure gains `docs/data-sources.md`, and the coach prompt now requires keeping it current. Reviews and the reference link to each other rather than repeating content.

@@ -317,6 +317,7 @@ grocery-ai-agent/
 │   ├── project-vision.md
 │   ├── roadmap.md
 │   ├── architecture.md
+│   ├── data-sources.md      (reference: every evaluated source, status, terms, fields)
 │   ├── decision-log.md
 │   ├── glossary.md
 │   └── reviews/             (design review records: first answer → challenge → revision)
@@ -454,6 +455,10 @@ Explain:
 # External Data Integration Rules
 
 The project should teach production-style data ingestion.
+
+Whenever a data source is evaluated or changes status:
+
+Update docs/data-sources.md.
 
 Whenever external data is introduced:
 

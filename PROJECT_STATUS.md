@@ -1,8 +1,8 @@
 # Project Status
 
-**Last updated:** 2026-10-11
+**Last updated:** 2026-10-13
 **Current phase:** Phase 3 — Data Source Investigation
-**Phase progress:** Not started
+**Phase progress:** Survey complete (Task 3.1); source decision pending
 
 ## Phase Tracker
 
@@ -10,7 +10,7 @@
 |---|-------|--------|
 | 1 | Repository Setup | ✅ Complete (2026-10-08) |
 | 2 | Architecture Design | ✅ Complete (2026-10-11) |
-| 3 | Data Source Investigation | 🟡 Next |
+| 3 | Data Source Investigation | 🟡 In progress |
 | 4 | Database Design | ⚪ Not started |
 | 5 | Data Ingestion MVP | ⚪ Not started |
 | 6 | Backend API MVP (FastAPI) | ⚪ Not started |
@@ -47,14 +47,14 @@
 
 ## Open Blockers / Decisions Pending
 
-- **Scraping policy** (see DEC-003): needs a decision before Phase 3 ends.
+- **Data source** (DEC-003): survey shows Blinkit/BigBasket/JioMart ToS prohibit price collection; Amazon API needs affiliate sales. Decide on an alternative in Task 3.2.
 - **Hostinger plan type**: confirm before Phase 12; may need a VPS upgrade.
 
 ## Next Task
 
-Phase 3, Task 3.1: Survey grocery platforms for pincode 560016 (issue to be created).
+Phase 3, Task 3.2: Compare legitimate data-source alternatives and settle DEC-003.
 
-Phase 2 done: [#4](https://github.com/asampath1/grocery-ai-agent/issues/4) architecture v1, [#5](https://github.com/asampath1/grocery-ai-agent/issues/5) exit review → architecture v1.1 (DEC-007 to DEC-013). Reviews: [docs/reviews/](docs/reviews/)
+Done: Task 3.1 [#6](https://github.com/asampath1/grocery-ai-agent/issues/6): platform survey ([Review 04](docs/reviews/phase-03-source-survey.md), [data-sources.md](docs/data-sources.md))
 
 ## Tracking
 

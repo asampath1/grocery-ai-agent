@@ -25,3 +25,11 @@ Terms are added as they come up in the project.
 | **Least privilege** | Giving each component only the permissions it needs, e.g. an API DB user that can't drop tables. |
 | **Partial failure** | A run where some items succeed and others fail. Handled by isolating each (source, pincode, product) fetch. |
 | **Availability status** | Whether a product can be bought in an area (`in_stock` / `out_of_stock` / `not_serviceable`). Stored as data, never treated as an error. |
+| **SSR (server-side rendering)** | The server sends HTML with the data already in it. Often the data is also embedded as JSON for the page to load on startup. |
+| **Client-side fetch / XHR** | The page loads, then calls a JSON API from the browser to get data. Visible in DevTools → Network → Fetch/XHR. |
+| **Server-driven UI** | The server sends a description of the *screen* (widgets, positions, styles), with data embedded inside. Fragile to parse, because a redesign changes the structure. |
+| **robots.txt** | A file asking automated crawlers which paths not to fetch. A convention per host, not a contract. |
+| **Terms of Service (ToS)** | The agreement a user accepts by using a platform. It overrides robots.txt for what a user may do. |
+| **Dark store / merchant_id** | A delivery-only warehouse serving a small area. Quick-commerce prices are tied to the dark store chosen for your coordinates. |
+| **Credential rotation** | Replacing API keys without downtime by keeping two valid keys: switch to B, revoke A, issue a new A. |
+| **API contract** | A documented, versioned structure that a provider commits to (e.g. `offersV2`), as opposed to undocumented internal endpoints that can change without notice. |

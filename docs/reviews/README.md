@@ -9,6 +9,7 @@ The **decision log** records *what* was decided. These records show *how the thi
 | 01 | [Coach prompt & project plan](phase-01-coach-prompt-review.md) | 2026-10-08 | 1 | DEC-001 to DEC-006 |
 | 02 | [High-level architecture](phase-02-architecture.md) | 2026-10-11 | 2 | DEC-007 to DEC-010 |
 | 03 | [Phase 2 exit review](phase-02-exit-review.md) | 2026-10-11 | 2 | DEC-012, DEC-013 |
+| 04 | [Grocery platform survey](phase-03-source-survey.md) | 2026-10-13 | 3 | evidence for DEC-003 |
 
 ## Record format
 
