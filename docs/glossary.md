@@ -33,3 +33,9 @@ Terms are added as they come up in the project.
 | **Dark store / merchant_id** | A delivery-only warehouse serving a small area. Quick-commerce prices are tied to the dark store chosen for your coordinates. |
 | **Credential rotation** | Replacing API keys without downtime by keeping two valid keys: switch to B, revoke A, issue a new A. |
 | **API contract** | A documented, versioned structure that a provider commits to (e.g. `offersV2`), as opposed to undocumented internal endpoints that can change without notice. |
+| **APMC / Mandi** | Agricultural Produce Market Committee: a regulated wholesale market. Mandi prices are wholesale, not retail. |
+| **Modal price** | The most common price traded in a market that day, alongside min and max. Our main price signal from mandi data. |
+| **Quintal** | 100 kg. Mandi prices are mostly ₹/quintal, so ₹11,800/q ≈ ₹118/kg. Some commodities use other units. |
+| **OpenAPI (OAS)** | A machine-readable specification of an API's endpoints, parameters, and response fields. |
+| **GODL** | Government Open Data License – India: the licence for data.gov.in datasets. |
+| **Source vs. channel** | The organisation that collects the data vs. the ways it's published (website, file download, API). |

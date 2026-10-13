@@ -2,6 +2,8 @@
 
 Durable lessons distilled from the daily journal. Newest first.
 
+- **2026-10-13:** `.env.example` holds *names*, `.env` holds *values*. Never put a key in a committed file, a typed command, or a screenshot. Rotate any key that's been exposed.
+- **2026-10-13:** Make sure you have the complete output before drawing a conclusion. A truncated paste hid the answer.
 - **2026-10-13:** Check the terms before inspecting the technology. It takes 2 minutes and decides the outcome. The ToS outweighs robots.txt.
 - **2026-10-13:** When parsing a source you don't control, read from data the app depends on to work (cart payloads), not from tracking or layout data.
 - **2026-10-11:** Walking failure scenarios through a design finds gaps that drawing boxes doesn't. Logging isn't alerting.

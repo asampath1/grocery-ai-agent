@@ -11,6 +11,7 @@
 - **Blinkit, BigBasket, JioMart:** read the ToS. All three prohibit collecting prices with automated tools.
 - **Amazon:** found the official Creators/PA API; eligibility requires an Associates account and ≥10 sales in 30 days.
 - Created `docs/data-sources.md` as the running reference for all evaluated sources (DEC-014).
+- **data.gov.in Mandi API:** registered, got an API key, made my first authenticated requests. Found **Bengaluru APMC tur dal, modal ₹11,800/q ≈ ₹118/kg** (vs Blinkit retail ₹165).
 - Wrote Review 04 and added evidence to DEC-003 and a revisit note to DEC-004.
 
 ## What I Learned
@@ -23,12 +24,18 @@
 - robots.txt is for crawlers; the **ToS is what governs me**, and it outweighs robots.txt.
 - **Check the terms first.** I spent about 40 minutes on network inspection; the ToS decided the question in 2.
 - A designed API (Amazon `offersV2`) and a reverse-engineered UI response are very different: versioning, explicit currency, structured unit price, selectable fields.
+- An official API with a spec (OpenAPI) and declared types makes parsing far easier than reverse-engineered JSON.
+- Mandi data: unique key ≈ (date, market, commodity, variety, grade); prices mostly ₹/quintal but not always; names contain synonyms and typos.
+- `curl -g` disables URL globbing so `filters[state]` works.
 - Credential rotation: two key sets per app, so keys can be swapped without downtime.
 
 ## Problems Encountered
 
 - The original project vision (compare prices across Blinkit/BigBasket/JioMart in my own database) is **prohibited by all three platforms' terms**.
 - Amazon's API is blocked by eligibility (it needs affiliate sales).
+- 🚨 Put the API key in `.env.example` (committed file). Caught before committing and moved to `.env`. The key was also exposed in a screenshot and in shell history, so rotate it on 2026-10-14.
+- The coach's Python one-liner had a quoting bug, fixed with `%` formatting.
+- A truncated paste briefly made it look as though tur dal wasn't reported.
 
 ## Decisions Made
 
@@ -38,9 +45,11 @@
 
 ## Open Questions
 
-- Which legitimate data source should we use? (Task 3.2)
+- Adopt the data.gov.in Mandi API formally (DEC-003)? Read and quote the GODL terms first.
+- Is history available (past `arrival_date`), or only today's snapshot?
+- Units per commodity (coconut looks like per 1,000 nuts).
 - How much should the project vision change: commodity prices, personal spending, or simulated multi-store data?
 
 ## Next Milestone
 
-Task 3.2: Compare the legitimate alternatives, settle DEC-003, and choose one source.
+Task 3.3: Read GODL, settle DEC-003, decide the project direction and MVP question, then close Phase 3.

@@ -65,6 +65,28 @@ My words: BigBasket: "bigbasket done. same case." JioMart: "same with JioMart To
 
 ---
 
+## Part 4: Government open data (data.gov.in)
+
+| Step | My observation (word for word) | Coach feedback |
+|---|---|---|
+| 1. First search | "Bangalore and Chennai are there in centers. data.gov.in has historical dataset from 2019 but prices are not there. it contains allocation of pulses to vaiours stated , dataset is available for downloads but for API, I have to login and register." | Wrong dataset (allocation, not prices). **Read a dataset's metadata before downloading or registering.** Registering for a key is ordinary API authentication, not an eligibility gate like Amazon's. Concept: **a source vs. its distribution channels.** |
+| 2. Found the Mandi dataset | "i need to give my name and phone number to download the entire file. Get API is allowing me to copy." | Updated daily, documented with OpenAPI 2.0, GODL licence: the first source likely to *permit* reuse. Name and mobile appear optional (no `*`). Prefer the API. |
+| 3. First real request | "api key generated, have stored it in .env.example file. … Curl also works" | 🚨 **Key in `.env.example`, which is committed.** Caught before the commit; moved to `.env` (`chmod 600`). The key was also visible in a screenshot and in shell history, so **rotate it** and load it via `${DATA_GOV_API_KEY}`. The response declares types, `field_exposed` filters, and DD/MM/YYYY dates. |
+| 4. Karnataka filter | "i will regenrating api key tomorrow… anyway i tried curl now" | `filters[state]` works (the coach's `state.keyword` correction wasn't needed). Bengaluru APMC is present. **Place names change** (Ramanagara → Bengaluru South). |
+| 5. Summarising with Python | "got error" | The coach's bug: escaped quotes inside a single-quoted shell string. Fixed with `%` formatting. **When quoting gets in the way, move to a `.py` file.** |
+| 6. Full Bengaluru list | (output pasted) | ✅ **Tur dal found:** `Red gram split/Arhar dal/Tur dal`, modal ₹11,800/q ≈ ₹118/kg. The coach's earlier "no tur today" came from a partial paste. Varieties per commodity, synonym names, typos, units that vary by commodity. |
+
+### The first real comparison
+
+| | Per kg |
+|---|---|
+| Wholesale: Bengaluru APMC tur dal, modal, 13/10/2026 | ≈ ₹118 |
+| Retail: Blinkit Tata Sampann Toor Dal 1 kg, observed manually 13/10/2026 | ₹165 (MRP ₹224) |
+
+That's about 40% above wholesale and about 90% at MRP. (Not like-for-like: branded and delivered vs. loose wholesale.) It suggests a new question: **"Is the retail price I'm paying fair compared with today's wholesale price?"**
+
+---
+
 ## What improved (what I now understand)
 
 | Before Task 3.1 | After |
@@ -75,5 +97,9 @@ My words: BigBasket: "bigbasket done. same case." JioMart: "same with JioMart To
 | robots.txt decides | **ToS outweighs robots.txt**: robots.txt is for search engines, the ToS is the agreement you accept |
 | Inspect first, check terms later | **Check terms first**: 2 minutes, and it decides the outcome |
 | Scraping = automation | BigBasket prohibits *manual* monitoring too; JioMart prohibits *your own database* of its data |
+
+| No legitimate source | **data.gov.in Mandi API**: open licence, documented, daily, includes Bengaluru tur dal |
+| An API key is "just a string" | `.env.example` = names only (committed); `.env` = values (never committed); never type keys inside commands; rotate exposed keys |
+| One day's partial output is enough | Check you have **complete** data before concluding (the coach got this wrong once) |
 
 **My main lesson:** "Can I get the data?" has three layers: technical, robots.txt, and contractual. The contractual one decides, and it's the cheapest to check, so check it first.

@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-10-13
 **Current phase:** Phase 3 — Data Source Investigation
-**Phase progress:** Survey complete (Task 3.1); source decision pending
+**Phase progress:** Survey done (3.1); first real API integration done (3.2); decisions pending (3.3)
 
 ## Phase Tracker
 
@@ -47,12 +47,15 @@
 
 ## Open Blockers / Decisions Pending
 
-- **Data source** (DEC-003): survey shows Blinkit/BigBasket/JioMart ToS prohibit price collection; Amazon API needs affiliate sales. Decide on an alternative in Task 3.2.
+- **🔑 Regenerate data.gov.in API key** (exposed in a screenshot on 2026-10-13). Portal didn't issue a new one the same day; retry 2026-10-14. Update `.env` only.
+- **Data source** (DEC-003): commercial platforms ruled out; **data.gov.in Mandi API is the lead candidate** (verified working). Formal decision in Task 3.3.
 - **Hostinger plan type**: confirm before Phase 12; may need a VPS upgrade.
 
 ## Next Task
 
-Phase 3, Task 3.2: Compare legitimate data-source alternatives and settle DEC-003.
+Phase 3, Task 3.3: Read GODL terms, settle DEC-003 (adopt data.gov.in Mandi API?), decide project direction + MVP question, close Phase 3.
+
+Done: Task 3.2: first authenticated request to data.gov.in Mandi API; Bengaluru APMC tur dal ≈ ₹118/kg wholesale ([data-sources.md](docs/data-sources.md))
 
 Done: Task 3.1 [#6](https://github.com/asampath1/grocery-ai-agent/issues/6): platform survey ([Review 04](docs/reviews/phase-03-source-survey.md), [data-sources.md](docs/data-sources.md))
 
